@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.io.File;
 
 public class Main {
 
@@ -8,7 +9,7 @@ public class Main {
      * @return Der zufällige Großbuchstabe.
      * @author Marlon.
      */
-    private static String generateRandomCapitalLetter() {
+    public static String generateRandomCapitalLetter() {
         /* Initialisieren von Random. */
         Random rand = new Random();
 
@@ -28,7 +29,7 @@ public class Main {
      * @return Der zufällige Kleinbuchstabe.
      * @author Marlon.
      */
-    private static String generateRandomLetter() {
+    public static String generateRandomLetter() {
         /* Initialisieren von Random. */
         Random rand = new Random();
 
@@ -48,7 +49,7 @@ public class Main {
      * @return Das Sonderzeichen.
      * @author Mohammed.
      */
-    private static String generateRandomSpecialCharacter() {
+    public static String generateRandomSpecialCharacter() {
         String[] randomSpecialCharacterArray = {"%","&","'","(",")","*","+",",","-",".","/"};
         int randomCharacterPosition = (int)(Math.random() * 11);
 
@@ -61,17 +62,172 @@ public class Main {
      * @return Die zufällige Zahl.
      * @author Mohammed.
      */
-    private static int generateRandomNumber() {
+    public static int generateRandomNumber() {
         int numbers = (int)(Math.random() * 10);
         return numbers;
     }
 
     /**
      * Der Algorithmus, der das Passwort generiert.
-     * @param useSpecialCharacters Gibt an, ob Sonderzeichen verwendet werden sollen.
+     * @param attributes Die Attribute des Passworts.
      * @return Das sichere Passwort.
      */
-    private static String pwGeneratorAlgorithm(boolean useSpecialCharacters) {
+    public static String pwGeneratorAlgorithm(String[] attributes) {
+        int specialCharacter = Boolean.parseBoolean(attributes[1]) ? 1 : 0;
+        String capitalLetters;
+        String letters;
+        String specialCharacters;
+        String numbers;
+        int passwordLength = (int)(Math.random() * 17);
+
+
+        switch (specialCharacter) {
+            case 0:                                                                                                      // NoSpecialCharacter
+                //______________________________________________________________________________________________________________________________//
+                if (passwordLength <= 6) {
+                    for (int i = 0; i < passwordLength; i++) {
+                        int numberLength = 0;
+                        int characterPicker = (int)(Math.random()*4)+1;
+
+                        if (characterPicker == 1) {
+                            capitalLetters = generateRandomCapitalLetter();
+                        }
+
+                            else if (characterPicker == 2) {
+                                letters = generateRandomLetter();
+                        }
+
+                                else if (characterPicker == 3 && numberLength < 2) {
+                                    numberLength++;
+                                    numbers = Integer.toString(generateRandomNumber());
+                        }
+                    }
+
+                }                                                                                                        // End of 6 Character password for loop
+                //______________________________________________________________________________________________________________________________//
+                if (passwordLength >= 6 && passwordLength <= 10) {
+                    for (int i = 0; i < passwordLength; i++) {
+                        int numberLength = 0;
+                        int characterPicker = (int)(Math.random()*4)+1;
+
+                        if (characterPicker == 1) {
+                            capitalLetters = generateRandomCapitalLetter();
+                        }
+
+                        else if (characterPicker == 2) {
+                            letters = generateRandomLetter();
+                        }
+
+                        else if (characterPicker == 3 && numberLength < 3) {
+                            numberLength++;
+                            numbers = Integer.toString(generateRandomNumber());
+                        }
+                    }
+
+                }
+                //______________________________________________________________________________________________________________________________//
+                if (passwordLength >= 10) {
+                    for (int i = 0; i < passwordLength; i++) {
+                        int numberLength = 0;
+                        int characterPicker = (int)(Math.random()*4)+1;
+
+                        if (characterPicker == 1) {
+                            capitalLetters = generateRandomCapitalLetter();
+                        }
+
+                        else if (characterPicker == 2) {
+                            letters = generateRandomLetter();
+                        }
+
+                        else if (characterPicker == 3 && numberLength < 4) {
+                            numberLength++;
+                            numbers = Integer.toString(generateRandomNumber());
+                        }
+                    }
+
+                }
+                //______________________________________________________________________________________________________________________________//
+                break;
+            case 1:
+                //______________________________________________________________________________________________________________________________//
+                if (passwordLength <= 6) {
+                    for (int i = 0; i < passwordLength; i++) {
+                        int numberLength = 0;
+                        int characterPicker = (int)(Math.random()*5)+1;
+
+                        if (characterPicker == 1) {
+                            capitalLetters = generateRandomCapitalLetter();
+                        }
+
+                        else if (characterPicker == 2) {
+                            letters = generateRandomLetter();
+                        }
+
+                        else if (characterPicker == 3 && numberLength < 2) {
+                            numberLength++;
+                            numbers = Integer.toString(generateRandomNumber());
+                        }
+
+                        else if (characterPicker == 4)
+                        {
+                            specialCharacters = generateRandomSpecialCharacter();
+                        }
+                    }
+
+                }                                                                                                        // End of 6 Character password for loop
+                //______________________________________________________________________________________________________________________________//
+                if (passwordLength >= 6 && passwordLength <= 10) {
+                    for (int i = 0; i < passwordLength; i++) {
+                        int numberLength = 0;
+                        int characterPicker = (int)(Math.random()*5)+1;
+
+                        if (characterPicker == 1) {
+                            capitalLetters = generateRandomCapitalLetter();
+                        }
+
+                        else if (characterPicker == 2) {
+                            letters = generateRandomLetter();
+                        }
+
+                        else if (characterPicker == 3 && numberLength < 3) {
+                            numberLength++;
+                            numbers = Integer.toString(generateRandomNumber());
+                        }
+
+                        else if (characterPicker == 4) {
+                            specialCharacters = generateRandomSpecialCharacter();
+                        }
+                    }
+
+                }
+                //______________________________________________________________________________________________________________________________//
+                if (passwordLength >= 10) {
+                    for (int i = 0; i < passwordLength; i++) {
+                        int numberLength = 0;
+                        int characterPicker = (int)(Math.random()*5)+1;
+
+                        if (characterPicker == 1) {
+                            capitalLetters = generateRandomCapitalLetter();
+                        }
+
+                        else if (characterPicker == 2) {
+                            letters = generateRandomLetter();
+                        }
+
+                        else if (characterPicker == 3 && numberLength < 4) {
+                            numberLength++;
+                            numbers = Integer.toString(generateRandomNumber());
+                        }
+
+                        else if (characterPicker == 4) {
+                            specialCharacters = generateRandomSpecialCharacter();
+                        }
+                    }
+
+                }
+                //______________________________________________________________________________________________________________________________//
+                break;
+        }
         return null;
     }
 
@@ -80,7 +236,7 @@ public class Main {
      * @param useSpecialCharacters Gibt an, ob Sonderzeichen verwendet werden sollen.
      * @return Das sichere Passwort.
      */
-    private static String[] bulkGeneratePasswords(int amount, boolean useSpecialCharacters) {
+    public static String[] bulkGeneratePasswords(int amount, boolean useSpecialCharacters) {
         return null;
     }
 
@@ -89,7 +245,7 @@ public class Main {
      * @param password Das zu überprüfende Passwort.
      * @return Die Stärke des Passworts. (0 = sehr schwach, 1 = schwach, 2 = mittel, 3 = stark)
      */
-    private static int checkPwStrength(String password) {
+    public static int checkPwStrength(String password) {
         return 0;
     }
 
@@ -98,33 +254,150 @@ public class Main {
      * @param path Der Pfad, in dem die Datei gespeichert werden soll.
      * @param fileName Der Name der Datei.
      */
-    private static void exportPassword(String path, String fileName) {
+    public static void exportPassword(String path, String fileName) {
 
     }
 
     /**
      * Liest die Attribute des Passworts aus einer Datei.
+     * 0: Länge des Passworts
+     * 1: Sonderzeichen (ja/nein | Standard: ja)
+     * 2: Passwort in Datei speichern (ja/nein | Standard: nein)
+     * 3: Dateipfad
+     * 4: Dateiname
      * @return Die Attribute des Passworts.
      */
-    private static String[] readPasswordAttributes() {
-        return null;
+    public static String[] readPasswordAttributes() {
+        /* Initialisieren von Scanner. */
+        Scanner scanner = new Scanner(System.in);
+
+        /* Erstellen eines Arrays für die Attribute. */
+        String[] arguments = new String[5];
+
+        /* Einlesen der Passwortlänge. */
+        boolean isPasswordSet = false;
+        while (isPasswordSet == false) {
+            System.out.println("Länge des Passworts: ");
+            arguments[0] = scanner.nextLine();
+
+            /*
+             * Wenn die Länge des Passworts nicht zwischen 4 und 16 Zeichen liegt,
+             * wird das Programm beendet.
+             */
+            if (Integer.parseInt(arguments[0]) < 4 || Integer.parseInt(arguments[0]) > 16) {
+                System.out.println("Die Länge des Passworts muss zwischen 4 und 16 Zeichen liegen.");
+                continue;
+            }
+
+            /* Wenn die Länge des Passworts zwischen 4 und 16 Zeichen liegt, wird isPasswordSet auf true gesetzt. */
+            isPasswordSet = true;
+        }
+
+        /* Einlesen, ob Sonderzeichen verwendet werden sollen. */
+        System.out.println("Sonderzeichen (ja/nein | Standard: ja): ");
+        arguments[1] = scanner.nextLine();
+
+        /* Überprüfen, ob der Benutzer ja oder nein eingegeben hat. (Standard: ja) */
+        switch (arguments[1]) {
+            case "ja":
+                arguments[1] = "true";
+                break;
+            case "nein":
+                arguments[1] = "false";
+                break;
+            default:
+                System.out.println("Ungültige Eingabe: Es werden nur Sonderzeichen verwendet.");
+                arguments[1] = "true"; // Standard: ja
+        }
+
+        /* Einlesen, ob die Passwörter in einer Datei gespeichert werden sollen. (Standard: nein) */
+        System.out.println("Möchten Sie die Passwörter in einer Datei speichern? (ja/nein | Standard: nein): ");
+        arguments[2] = scanner.nextLine();
+
+        /*
+         * Wenn der Benutzer die Passwörter in einer Datei speichern möchte,
+         * wird der Dateipfad und der Dateiname eingelesen.
+         */
+        switch (arguments[2]) {
+            case "ja":
+
+                /* Passwort in der Datei speichern wird auf true gesetzt. */
+                arguments[2] = "true";
+
+                /* Einlesen des Dateipfades. */
+                boolean isFilePathSet = false;
+                while (isFilePathSet == false) {
+                    System.out.println("Bitte geben Sie den Dateipfad an:");
+                    arguments[3] = scanner.nextLine();
+
+                    /* Überprüfen, ob der Dateipfad existiert. */
+                    File f = new File (arguments[3]);
+                    if (!f.exists() || !f.isDirectory()) {
+                        System.out.println("Dateipfad existiert nicht oder ist kein Verzeichnis.");
+                        continue;
+                    }
+
+                    isFilePathSet = true;
+                }
+
+                /* Einlesen des Dateinamens. */
+                boolean isFileNameSet = false;
+
+                while (isFileNameSet == false) {
+                    String[] forbiddenCharacters = {"\\", "/", ":", "*", "?", "\"", "<", ">", "|"};
+                    System.out.println("Name der Datei: ");
+                    arguments[4] = scanner.nextLine();
+
+                    /* Überprüfen, ob der Dateiname verbotene Sonderzeichen enthält. */
+                    boolean containsForbiddenCharacter = false;
+                    for (String character: forbiddenCharacters) {
+                        if (arguments[4].contains(character)) {
+                            System.out.println("Der Dateiname darf keine der folgenden Zeichen enthalten: \\ / : * ? \" < > |");
+                            containsForbiddenCharacter = true;
+                        }
+                    }
+                    if (containsForbiddenCharacter) {
+                        continue;
+                    }
+
+                    /* Überprüfen, ob die Datei existiert. */
+                    File f = new File (arguments[3] + "\\" + arguments[4]);
+                    if (f.exists()) {
+                        System.out.println("Datei existiert bereits.");
+                        continue;
+                    }
+
+                    /* isFileNameSet wird auf true gesetzt. */
+                    isFileNameSet = true;
+                }
+                break;
+            case "nein":
+
+                /* Passwort in der Datei speichern wird auf false gesetzt. */
+                arguments[2] = "false";
+                break;
+           default:
+               System.out.println("Ungültige Eingabe: Die Passwörter werden nicht in einer Datei gespeichert.");
+               arguments[2] = "false"; // Standard: nein
+        }
+
+        return arguments;
     }
 
     /**
      * Gibt die generierten Passwörter in der Konsole aus und
      * zeigt die Passwortstärke an.
      */
-    private static void passwordsConsoleOutput() {
+    public static void passwordsConsoleOutput() {
 
     }
 
     /**
      * Diese Methode ist für Marlon zum Testen von Methoden.
      */
-    private static void debug() {
-        String randomCapitalLetter = generateRandomCapitalLetter();
-        String randomLetter = generateRandomLetter();
-        System.out.println(randomCapitalLetter + " " + randomLetter);
+    public static void debug() {
+        String[] attributes = readPasswordAttributes();
+        System.out.println(attributes[0] + " " + attributes[1] + " " + attributes[2] + " " + attributes[3] + " " + attributes[4]);
     }
 
     /**
