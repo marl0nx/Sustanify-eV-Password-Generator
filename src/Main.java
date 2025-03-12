@@ -6,6 +6,7 @@ public class Main {
     /**
      * Erstellt einen zufälligen Großbuchstaben.
      * @return Der zufällige Großbuchstabe.
+     * @author Marlon.
      */
     private static String generateRandomCapitalLetter() {
         /* Initialisieren von Random. */
@@ -25,6 +26,7 @@ public class Main {
     /**
      * Erstellt einen zufälligen Kleinbuchstaben.
      * @return Der zufällige Kleinbuchstabe.
+     * @author Marlon.
      */
     private static String generateRandomLetter() {
         /* Initialisieren von Random. */
@@ -43,18 +45,25 @@ public class Main {
 
     /**
      * Erstellt ein zufälliges Sonderzeichen.
-     * @return Das zufällige Sonderzeichen.
+     * @return Das Sonderzeichen.
+     * @author Mohammed.
      */
     private static String generateRandomSpecialCharacter() {
-        return null;
+        String[] randomSpecialCharacterArray = {"%","&","'","(",")","*","+",",","-",".","/"};
+        int randomCharacterPosition = (int)(Math.random() * 11);
+
+        String randomSpecialCharacter = randomSpecialCharacterArray[randomCharacterPosition];
+        return randomSpecialCharacter;
     }
 
     /**
-     * Erstellt eine zufällige Zahl.
+     * Erstellt eine zufällige Zahl zwischen 0 und 9.
      * @return Die zufällige Zahl.
+     * @author Mohammed.
      */
     private static int generateRandomNumber() {
-        return 0;
+        int numbers = (int)(Math.random() * 10);
+        return numbers;
     }
 
     /**
