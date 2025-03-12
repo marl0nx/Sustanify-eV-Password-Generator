@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.Scanner;
+
 public class Main {
 
     /**
@@ -5,7 +8,18 @@ public class Main {
      * @return Der zufällige Großbuchstabe.
      */
     private static String generateRandomCapitalLetter() {
-        return null;
+        /* Initialisieren von Random. */
+        Random rand = new Random();
+
+        /* Alle möglichen Buchstaben */
+        String[] capitalLettersList = {"A", "B", "C", "D", "E", "F", "G",
+                "H", "I", "J", "K", "L", "M", "N", "O", "P",
+                "Q", "R", "S", "T", "U", "V", "W",
+                "X", "Y", "Z"};
+
+        /* Auswahl eines zufälligen Großbuchstabens aus der Liste. */
+        String randomCapitalLetter = capitalLettersList[rand.nextInt(capitalLettersList.length)];
+        return randomCapitalLetter;
     }
 
     /**
@@ -13,7 +27,18 @@ public class Main {
      * @return Der zufällige Kleinbuchstabe.
      */
     private static String generateRandomLetter() {
-        return null;
+        /* Initialisieren von Random. */
+        Random rand = new Random();
+
+        /* Alle möglichen Buchstaben */
+        String[] lettersList = {"a", "b", "c", "d", "e", "f", "g",
+                "h", "i", "j", "k", "l", "m", "n", "o", "p",
+                "q", "r", "s", "t", "u", "v", "w",
+                "x", "y", "z"};
+
+        /* Auswahl eines zufälligen Großbuchstabens aus der Liste. */
+        String randomLetter = lettersList[rand.nextInt(lettersList.length)];
+        return randomLetter;
     }
 
     /**
@@ -77,11 +102,28 @@ public class Main {
     }
 
     /**
+     * Gibt die generierten Passwörter in der Konsole aus und
+     * zeigt die Passwortstärke an.
+     */
+    private static void passwordsConsoleOutput() {
+
+    }
+
+    /**
+     * Diese Methode ist für Marlon zum Testen von Methoden.
+     */
+    private static void debug() {
+        String randomCapitalLetter = generateRandomCapitalLetter();
+        String randomLetter = generateRandomLetter();
+        System.out.println(randomCapitalLetter + " " + randomLetter);
+    }
+
+    /**
      * Die Main-Methode des Programms.
      * @param args Optionale Argumente.
      */
     public static void main(String[] args) {
-
+        debug(); // Debugging
     }
 
 }
