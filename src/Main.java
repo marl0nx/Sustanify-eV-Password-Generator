@@ -200,7 +200,7 @@ public class Main {
     }
 
     /**
-     * Generiert ein sicheres Passwort.
+     * Erschafft eine Menge von sicheren Passwörtern mithilfe der bereits definierten Methoden.
      *
      * @param arguments Die Attribute des Passworts.
      * @return Das sichere Passwort.
@@ -493,7 +493,7 @@ public class Main {
             String passwordAmountString = readAttribute();
 
             /* Überprüfen, ob der Benutzer eine Zahl eingegeben hat. */
-            if (!Character.isDigit(passwordAmountString.charAt(0))) {
+            if (!Character.isDigit(passwordAmountString.charAt(0)) || passwordAmountString.isBlank()) {
                 System.out.println("\033[31mDie eingegebene Anzahl ist keine Zahl.\033[0m");
                 continue;
             }
@@ -551,6 +551,12 @@ public class Main {
     public static void passwordsConsoleOutput(String[] passwords) {
         int passwordStrength;
 
+        if (passwords.length > 500) {
+            System.out.println("\033[31mEs wurden mehr als 500 Passwörter generiert. Die Passwörter werden dementsprechend nicht in der Konsole angezeigt.\033[0m");
+            System.out.println("\033[31mEs wird empfohlen, bei so einer großen Menge diese in einer Datei zu speichern.\033[0m");
+            return;
+        }
+
         for (int i = 0; i < passwords.length; i++) {
             passwordStrength = checkPwStrength(passwords[i]);
             System.out.println("\n\033[33mPasswort " + (i + 1) + ": \033[34m" + passwords[i]);
@@ -567,6 +573,31 @@ public class Main {
     }
 
     /**
+     * Entfernt Duplikate aus der Liste der generierten Passwörter.
+     * @param passwords Die Liste der generierten Passwörter.
+     * @author Marlon
+     */
+    public static String[] removeDuplicatedPasswords(String[] passwords) {
+        boolean foundDuplicate = false;
+
+        for (int i = 0; i < passwords.length; i++) { // Erstes Passwort
+            for (int j = i + 1; j < passwords.length; j++) { // Zu vergleichendes Passwort
+                if (passwords[i].equals(passwords[j]) && !passwords[i].equals("Duplikat")) {
+                    foundDuplicate = true;
+                    passwords[j] = "Duplikat"; // Doppeltes Passwort zu "Duplikat" umbenennen.
+                }
+            }
+        }
+
+        if (foundDuplicate) {
+            System.out.println("\033[31mEs wurden Duplikate gefunden. Diese wurden durch \"Duplikat \" ersetzt.\033[0m");
+            System.out.println("\033[31mBitte erhöhen Sie die Länge der Passwörter oder reduzieren Sie die Menge.\033[0m");
+        }
+
+        return passwords;
+    }
+
+    /**
      * Die Main-Methode des Programms.
      *
      * @param args Optionale Argumente.
@@ -574,6 +605,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String[] arguments = readPasswordAttributes();
         String[] passwords = bulkGeneratePasswords(arguments);
+        passwords = removeDuplicatedPasswords(passwords);
         passwordsConsoleOutput(passwords);
 
         /* Wenn der Benutzer die Passwörter in einer Datei speichern möchte. */
