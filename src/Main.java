@@ -204,6 +204,7 @@ public class Main {
      *
      * @param arguments Die Attribute des Passworts.
      * @return Das sichere Passwort.
+     * @author Marlon.
      */
     public static String[] bulkGeneratePasswords(String[] arguments) {
         String[] passwords = new String[Integer.parseInt(arguments[5])];
@@ -395,6 +396,7 @@ public class Main {
     /**
      * Liest ein, ob Passwörter in eine Datei gespeichert werden sollen.
      * @return "true" wenn Passwörter gespeichert werden sollen, sonst "false".
+     * @author Marlon.
      */
     public static String readSaveToFileOption() {
         System.out.println("\033[33mMöchten Sie die Passwörter in einer Datei speichern? (ja/nein | Standard: nein): \033[0m");
@@ -512,8 +514,8 @@ public class Main {
      * 2: Passwort in Datei speichern (ja/nein | Standard: nein)
      * 3: Dateipfad
      * 4: Dateiname
-     * @author Hend + Marlon.
      * @return Die Attribute des Passworts.
+     * @author Hend + Marlon.
      */
     public static String[] readPasswordAttributes() {
         /* Erstellen eines Arrays für die Attribute. */
