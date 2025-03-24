@@ -339,7 +339,7 @@ public class Main {
             writer.write(password + "\n");
         }
         writer.close();
-        System.out.println("\033[32mIhre Passwörter wurde erfolgreich gespeichert!\033[0m");
+        System.out.println("\033[32mIhre Passwörter wurden erfolgreich unter " + path + " gespeichert!\033[0m");
     }
 
     /**
