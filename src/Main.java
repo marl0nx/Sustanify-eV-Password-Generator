@@ -339,7 +339,7 @@ public class Main {
             writer.write(password + "\n");
         }
         writer.close();
-        System.out.println("\033[32mIhre Passwörter wurde erfolgreich gespeichert!\033[0m");
+        System.out.println("\033[32mIhre Passwörter wurden erfolgreich unter " + path + " gespeichert!\033[0m");
     }
 
     /**
@@ -423,7 +423,7 @@ public class Main {
         String filePath = "";
 
         while (!isFilePathSet) {
-            System.out.println("\033[33mBitte geben Sie den Dateipfad an:\033[0m ");
+            System.out.println("\033[33mBitte geben Sie den Dateipfad an: (Leer für aktuelles Verzeichnis)\033[0m ");
             filePath = readAttribute();
 
             /* Überprüfen, ob der Dateipfad existiert. */
